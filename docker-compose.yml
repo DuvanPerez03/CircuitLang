@@ -1,0 +1,9 @@
+services:
+  circuito-lang:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: circuito-language
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

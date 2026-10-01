@@ -1,0 +1,93 @@
+{
+  "version": 2,
+  "reglas": [
+    {
+      "nombre": "programa",
+      "tipo": "sintactica",
+      "produccion": "CIRCUITO IDENTIFICADOR { declaraciones } FIN ;"
+    },
+    {
+      "nombre": "declaraciones",
+      "tipo": "sintactica",
+      "produccion": "declaracion*"
+    },
+    {
+      "nombre": "declaracion",
+      "tipo": "sintactica",
+      "produccion": "declaracion_entrada_salida | declaracion_constante | declaracion_conectar | declaracion_simular | declaracion_tabla_verdad"
+    },
+    {
+      "nombre": "declaracion_entrada_salida",
+      "tipo": "sintactica",
+      "produccion": "( ENTRADA | SALIDA ) lista_identificadores ;"
+    },
+    {
+      "nombre": "declaracion_constante",
+      "tipo": "sintactica",
+      "produccion": "CONSTANTE IDENTIFICADOR = booleano ;"
+    },
+    {
+      "nombre": "declaracion_conectar",
+      "tipo": "sintactica",
+      "produccion": "CONECTAR [ compuerta ] lista_identificadores -> IDENTIFICADOR ;"
+    },
+    {
+      "nombre": "declaracion_simular",
+      "tipo": "sintactica",
+      "produccion": "SIMULAR lista_valores ;"
+    },
+    {
+      "nombre": "declaracion_tabla_verdad",
+      "tipo": "sintactica",
+      "produccion": "TABLA_DE_VERDAD ;"
+    },
+    {
+      "nombre": "lista_identificadores",
+      "tipo": "sintactica",
+      "produccion": "IDENTIFICADOR ( , IDENTIFICADOR )*"
+    },
+    {
+      "nombre": "lista_valores",
+      "tipo": "sintactica",
+      "produccion": "( valor ( , valor )* ) | lista_identificadores"
+    }
+  ],
+  "componentes": {
+    "valor": "NUMERO | IDENTIFICADOR | VERDADERO | FALSO",
+    "booleano": "VERDADERO | FALSO",
+    "compuerta": "AND | OR | NOT | XOR | NAND | NOR | XNOR"
+  },
+  "configuracion": {
+    "inicio": "CIRCUITO",
+    "fin": "FIN",
+    "declaraciones": [
+      "ENTRADA",
+      "SALIDA",
+      "CONSTANTE",
+      "CONECTAR",
+      "SIMULAR",
+      "TABLA_DE_VERDAD"
+    ],
+    "booleanos": ["VERDADERO", "FALSO"],
+    "compuertas": ["AND", "OR", "NOT", "XOR", "NAND", "NOR", "XNOR"],
+    "simbolos": {
+      "apertura_programa": "{",
+      "cierre_programa": "}",
+      "fin_declaracion": ";",
+      "separador": ",",
+      "apertura_lista": "(",
+      "cierre_lista": ")"
+    },
+    "operadores": {
+      "asignacion": "=",
+      "conexion": "->",
+      "compuerta_predeterminada": "AND"
+    },
+    "validaciones_semanticas": {
+      "identificadores_unicos": true,
+      "referencias_declaradas": true,
+      "salidas_conectadas": true,
+      "simulacion_valida": true
+    }
+  }
+}
