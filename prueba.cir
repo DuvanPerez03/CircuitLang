@@ -1,0 +1,8 @@
+CIRCUITO demo {
+ENTRADA a, b;
+SALIDA resultado;
+
+CONECTAR AND a, b -> resultado;
+
+SIMULAR (VERDADERO, FALSO);
+} FIN;
